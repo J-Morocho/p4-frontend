@@ -1,10 +1,8 @@
+# **<p align="center">Plantr</p>**
+
 # Project Overview
 
 ## Project Schedule
-
-This schedule will be used to keep track of your progress throughout the week and align with our expectations.  
-
-You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
 
 |  Day | Deliverable | Status
 |---|---| ---|
@@ -17,56 +15,54 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Project Description
 
-Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and\or functionality.
+A simple dashboard for making sure your plants are getting the care they need. The preliminary version of Plantr allows you to track whether your plants have been watered.
 
 ## Google Sheet
 
-Include link to your google sheet here.  Here is the sample [Suresh had used in class](https://docs.google.com/spreadsheets/d/1V1M3Eq1NXH2PNmeTlVviRhEjX9kenq769Vo2P5mMtro/edit#gid=0) 
+https://docs.google.com/spreadsheets/d/1MiYUM5Rr0hr_9kbYVNgYzxu88jngsMA9udl1Ox-z7Vw/edit#gid=0
 
 ## Wireframes
 
 Upload images of wireframe to cloudinary and add the link here with a description of the specific wireframe. Do not include the actual image and have it render on the page.  
 
-- [Mobile](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/mobile.png)
-- [Tablet](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/nav-highlight.gif)
-- [Desktop](https://git.generalassemb.ly/SEIR-629/project-1-portfolio/blob/master/readme-assets/desktop.png)
-
-Wireframing Resources:
-
-- [Mockflow](https://mockflow.com/app/#Wireframe)
-- [Figma](https://www.figma.com/)
-
+- [Mobile](https://res.cloudinary.com/jcloud3zf/image/upload/v1600001397/project-4/plantr-mobile_q8yfnw.png)
+- [Desktop](https://res.cloudinary.com/jcloud3zf/image/upload/v1600001379/project-4/p4-desktop_crum2i.png)
 
 ## Time/Priority Matrix 
 
-Include a full list of features that have been [prioritized](https://res.cloudinary.com/doaftkgbv/image/upload/v1583773146/ValueVSComplexity_u2inhx.png) based on the `Time and Priority` Matix.  This involves drawing a a square.  In the middle of the square, on the x axis draw a line.  The most left part of the line should start with 0hrs and the end of the line should include 2hrs.  This line will be used to estimate how much time any one feature will take to complete. 
-
-Now draw a vertical line on the y axis.  The top of this line should have `High` and the bottom `Low`.  This line will be used to assign a priority to to each feature you wish to include in the project.  
-
-Now create a separate list starting with A and assign it one of the features.  Continue to assign each feature a letter.  Once complete add each letter to the matrix assigning based on what your feel it's prioirty is an how long it will take to implement. If any one feature takes longer than 2hrs to complete than break it down into smaller tasks and reassign them a new letter. 
-
-Once complete tally up the time and determine how long the project will take to complete. Now break those features into MVP and PostMVP so you can guarantee you will have a fully functioning project to demo. 
-
-### MVP/PostMVP - 5min
-
-The functionality will then be divided into two separate lists: MPV and PostMVP.  Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
+-[Matrix]()
 
 #### MVP (examples)
 
-- Pull data using google json api
-- Render data on page 
-- Allow user to choose favorites 
-- Save their choices in firebase
+- Registration is required in order to utilize this API
+- Once logged in the user is presented with a dashboard that has a sidebar containing the categories they've registered as well
+as a list of plants within those categories
+- In order to begin tracking plants the user will need to create a category and add the desired plant to it
+- Registration of categories begins in the sidebar, a modal will open up that allows the user to create a new category if they wish
+- Once a category is created the main page will display a button allowing a user to add a plant
+- Plants have a name, description, as well as a required category that can be defined
+- Once a plant is created its information is displayed on the page along with tracking details
+
 
 #### PostMVP 
 
-- Anything else that is not MVP
+
+- Functionality that allows tracking of ambient temperature and amount of light recieved
+- Search bar for plants where needs have not been met
+- Allow user to choose color for categories
+- Categories are highlighted on click
+- Notification when plant need isn't met
 
 ## Functional Components
 
-Based on the initial logic defined in the previous sections try and breakdown the logic further into functional components, and by that we mean functions.  Try and capture what logic would need to be defined if the game was broken down into the following categories.
-
-Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add and additional hour or two to each component to play it safe.
+- Hamburger menu, navigation bar, side bar with categories
+- Buttons generated for user defined categories, attach to create category request
+- Button for adding a new plant within a category
+- Display cards for plants in category, using get all plants by category request
+- Add new category/delete category button, attach to create/delete category request. Located in sidebar
+- Modal popup when creating new category or deleting a category
+- Modal popup when adding a new plant to the category. Calls create plant request
+- Logout button on navbar
 
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
@@ -93,7 +89,8 @@ Time frames are also key in the development cycle.  You have limited time to cod
 | Total | H | 20hrs| -hrs | -hrs |
 
 ## Additional Libraries
- Use this section to list all supporting libraries and thier role in the project. 
+VueJS/Vue CLI
+Bootstrap
 
 ## Code Snippet
 
@@ -112,6 +109,3 @@ function reverse(string) {
 **ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
 **RESOLUTION**: Missing comma after first object in sources {} object
 
-## Previous Project Worksheet
- - [Readme's](https://github.com/jkeohan/fewd-class-repo/tree/master/final-project-worksheet/project-worksheet-examples)
- - [Best of class readme](https://github.com/jkeohan/fewd-class-repo/blob/master/final-project-worksheet/project-worksheet-examples/portfolio-gracie.md)
