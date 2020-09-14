@@ -1,5 +1,8 @@
 <template>
   <div id="Home">
+    <div id="nav">
+      <Header v-bind:URL="URL"/>
+    </div>
     <div class="media">
       <Sidebar/>
       
@@ -9,12 +12,14 @@
 </template>
 
 <script>
+import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 // import Footer from './components/Footer'
 
 export default {
   name: 'Home',
   components: {
+    Header,
     Sidebar
   },
   // for components access
