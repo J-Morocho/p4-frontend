@@ -1,7 +1,7 @@
 <template>
     <b-navbar class='primary'>
         <template slot="brand">
-            <b-navbar-item tag="router-link" :to="{ path: '/' }">
+            <b-navbar-item tag="router-link" :to="{ path: '/home' }">
                 Plantr
             </b-navbar-item>
         </template>
