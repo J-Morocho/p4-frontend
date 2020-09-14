@@ -27,6 +27,17 @@
 <script>
 export default {
     name: 'Login',
+    data: function() {
+        return {
+            username: '',
+            password: '',
+        }
+    },
+    methods: {
+        handleLogin: function(){
+            fetch('http://localhost:8000/auth/users/login')
+        }
+    }
 }
 </script>
 

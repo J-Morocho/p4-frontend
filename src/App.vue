@@ -1,6 +1,7 @@
 <template>
   <div id="app">
       <router-view/>
+
   </div>
 </template>
 
@@ -13,12 +14,7 @@ export default {
       username: "",
       password: "",
       loggedIn: false,
-    }
-  },
-  methods: {
-    // We need to grab the token and send it over to Home.vue
-    handleLogin: function(){
-      fetch('http://localhost:8000/auth/users/login/')
+      msg: "Hello"
     }
   }
 }
