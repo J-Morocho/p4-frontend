@@ -78,7 +78,8 @@ as a list of plants within those categories
 | Login page | H | 4hr | - | - |
 | side bar | H | 2 hr | - | - |
 | responsive | H | 3 hr | - | - |
-| Total | H | 23 hrs| -hrs | -hrs |
+| vue research| H | 10hr | - | - |
+| Total | H | 33 hrs| -hrs | -hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
