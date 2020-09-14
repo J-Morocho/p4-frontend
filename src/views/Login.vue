@@ -18,7 +18,7 @@
                 </b-input>
           </b-field> -->
           <br>
-          <router-link to="/" tag="button">Login</router-link>
+          <router-link to="/home" tag="button">Login</router-link>
           <br>
           <button class='button'>Register</button>
           <router-view/>
