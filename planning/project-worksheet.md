@@ -90,8 +90,9 @@ as a list of plants within those categories
 | Total | H | 16 hrs| -hrs | -hrs |
 
 ## Additional Libraries
-VueJS/Vue CLI
-Bootstrap
+VueJS/Vue CLI  
+Bootstrap  
+
 
 ## Code Snippet
 
