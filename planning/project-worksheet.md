@@ -30,7 +30,7 @@ Upload images of wireframe to cloudinary and add the link here with a descriptio
 
 ## Time/Priority Matrix 
 
--[Matrix]()
+- [Matrix](https://res.cloudinary.com/jcloud3zf/image/upload/v1600083018/project-4/p4-frontend-matrix_zrb0m4.png)
 
 #### MVP (examples)
 
@@ -67,26 +67,27 @@ as a list of plants within those categories
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Hamburger | H | 1hr | 1.5hr | -hr|
-| Project Previews | H | 3hr | -hr | -hr|
-| Regular Nav | H | H | -hr | -hr|
-| Adding Form | H | 1.5hr| -hr | -hr |
-| Other sections and flex| M | 4hr | 2hr | -hr|
-| Working with API | H | 3hrs| 2hr | -hr |
-| Responsive | H | 3hr | -hr | -hr|
-| Social Media Icons | L | 1hr | -hr | -hr|
-| Total | H | 15.5hrs| -hrs | -hrs |
+| Hamburger/Navigation | H | 1hr | hr | -hr|
+| List created categories | H | 1.5hr | -hr | -hr|
+| List created plants | H | 1.5 hr | -hr | -hr|
+| List plant by category | H | 2 hr| -hr | -hr |
+| Display card for plant | H | 1hr | hr | -hr|
+| Conntect buttons to requests | H | 3hrs| hr | -hr |
+| category modal | H | 2hr | -hr | -hr|
+| plant modal | H | 2hr | -hr | -hr|
+| Login page | H | 4hr | - | - |
+| side bar | H | 2 hr | - | - |
+| responsive | H | 3 hr | - | - |
+| Total | H | 23 hrs| -hrs | -hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Project Hover | L | 3hr | -hr | -hr|
-| Banner letters wiggle | L | 1hr | -hr | -hr|
-| Interactive Banner | M | 4hr | -hr | -hr|
-| Materialize | H | 4hr | -hr | -hr|
-| Bootstrap | H | 4hr | -hr | -hr|
-| Make own icon | L | 4hr | -hr | -hr|
-| Total | H | 20hrs| -hrs | -hrs |
+| Notifications | H | 4hr | - | - |
+| Category colors | L | 4hr | - | - |
+| Category highlight | M | 2hr | - | -| 
+| Additional tracking | H | 6 hr | - | - |
+| Total | H | 16 hrs| -hrs | -hrs |
 
 ## Additional Libraries
 VueJS/Vue CLI
