@@ -20,8 +20,7 @@
           <br>
           <router-link to="/home" tag="button">Login</router-link>
           <br>
-          <button class='button'>Register</button>
-          <router-view/>
+          <router-link to="/register" tag="button">Register</router-link>
         </div>
 </template>
 
