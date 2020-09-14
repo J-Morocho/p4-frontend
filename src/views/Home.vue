@@ -1,18 +1,61 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="Home">
+    <div id="nav">
+      <Header v-bind:URL="URL"/>
+      
+    </div>
+    <div class="media">
+      <Sidebar/>
+      
+      <!-- <Footer/> -->
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Header from '../components/Header'
+import Sidebar from '../components/Sidebar'
+// import Footer from './components/Footer'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Header,
+    Sidebar
+  },
+  // for components access
+  data: function() {
+    return {
+      loggedIn: false,
+      token: '',
+      // Obtained from login page
+
+      URL: 'http://localhost:8000'
+    }
   }
+  
 }
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>

@@ -1,26 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <Header/>
-
-      
+    <div class="container">
+      <h1 class='title is-1'>Plantr</h1>
+      <p>Username</p>
+      <input class='input is-primary' type='text' v-model='username'/>
+      <p>Password</p>
+      <input class='input is-primary' type='password' v-model='password'/>
+      <br>
+      <button class='button'>Login</button>
+      <br>
+      <button class='button'>Sign Up</button>
     </div>
-    <router-view/>
-    <Footer/>
   </div>
 </template>
 
 <script>
-import Header from './components/Header'
-import Footer from './components/Footer'
 
 export default {
   name: 'App',
-  components: {
-    Header,
-    Footer
+  data: function() {
+    return {
+      username: "",
+      password: "",
+    }
+  },
+  methods: {
+    // We need to grab the token and send it over to Home.vue
+    handleLogin: function(){
+      fetch('http://localhost:8000/api')
+    }
   }
-  
 }
 </script>
 
@@ -29,20 +38,22 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
 }
 
-#nav {
-  padding: 30px;
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+p {
+  text-align: left;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
