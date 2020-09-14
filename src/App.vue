@@ -1,33 +1,31 @@
 <template>
   <div id="app">
-    <div class="container">
-      <h1 class='title is-1'>Plantr</h1>
-      <p>Username</p>
-      <input class='input is-primary' type='text' v-model='username'/>
-      <p>Password</p>
-      <input class='input is-primary' type='password' v-model='password'/>
-      <br>
-      <button class='button'>Login</button>
-      <br>
-      <button class='button'>Sign Up</button>
+    <div id="nav">
+      <Header/>
     </div>
+      <router-view/>
   </div>
 </template>
 
 <script>
+import Header from './components/Header'
 
 export default {
   name: 'App',
+  components: {
+    Header
+  },
   data: function() {
     return {
       username: "",
       password: "",
+      loggedIn: false,
     }
   },
   methods: {
     // We need to grab the token and send it over to Home.vue
     handleLogin: function(){
-      fetch('http://localhost:8000/api')
+      fetch('http://localhost:8000/auth/users/login/')
     }
   }
 }
@@ -43,7 +41,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: green;
 }
 
 .container {
@@ -52,8 +49,11 @@ export default {
   padding: 2em;
 }
 
-p {
+label {
   text-align: left;
 }
 
+.button {
+  background-color: #2D669B;
+}
 </style>
