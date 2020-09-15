@@ -5,8 +5,15 @@
     </div>
     <div class="media">
       <Sidebar/>
-      <div class="content">
-        <button class="button">New Plant</button>
+      <button class="button">New Plant</button>
+      <div class="content-container">
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
       </div>
     </div>
   </div>
@@ -16,6 +23,7 @@
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 // import Footer from './components/Footer'
+import Card from '../components/Card'
 
 
 export default {
@@ -23,6 +31,7 @@ export default {
   components: {
     Header,
     Sidebar,
+    Card,
   },
   // for components access
   data: function() {
@@ -57,7 +66,9 @@ export default {
   color: #ffffff;
 }
 
-.content {
+
+
+.content-container {
   padding: 20px;
 }
 </style>
