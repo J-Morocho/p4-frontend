@@ -4,7 +4,7 @@
       <Header/>
     </div>
     <div class="media">
-      <Sidebar/>
+      <Sidebar :url='URL' :cred='token'/>
       <button class="button">New Plant</button>
       <div class="content-container">
         <!-- Pass user data into this card -->
@@ -24,7 +24,7 @@ import Card from '../components/Card'
 
 export default {
   name: 'Home',
-  props: ['url'],
+  props: ['url', 'LoggedIn', 'user'],
   components: {
     Header,
     Sidebar,
@@ -33,15 +33,45 @@ export default {
   // for components access
   data: function() {
     return {
-      loggedIn: false,
-      // Obtained from login page
-      tokens: '',
+      categories: [],
+      // TODO: Change login based on App.vue Login value
+      loggedIn: this.LoggedIn,
+      token: this.user.token,
       URL: this.url
     }
+  },
+  methods: {
+    displayCategories: function() {
+      fetch(`${this.URL}/api/categories/`, {
+          method: 'get',
+          headers: {
+              'Authorization': `JWT ${this.token}`
+              }
+          })
+          .then(response => response.json())
+          .then(data => this.categories = data.results)
+    },
+    getAllPlants: function() {
+      fetch(`${this.URL}/api/plants/`, {
+          method: 'get',
+          headers: {
+            'Authorization': `JWT ${this.token}`
+          }
+      })
+      .then(response=> response.json())
+      .then(data => console.log(data))
+    },
+    clearContainer: function(){ 
+      return null
+    },
   },
   before: function() {
     const {tokens, URL} = this.$route.query
     console.log(tokens, URL)
+  },
+  beforeMount: function() {
+    this.displayCategories()
+    this.getAllPlants()
   }
   
 }

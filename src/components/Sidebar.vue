@@ -21,18 +21,20 @@
 <script>
 export default {
     name: 'sidebar',
+    props: ['url', 'cred'],
     data: function() {
         return {
             categories: null,
-            token: null
+            token: this.cred,
+            URL: this.url
         }
     },
     methods: {
         displayCategories: function() {
-            fetch('http://localhost:8000/api/categories/', {
+            fetch(`${this.URL}/api/categories/`, {
                 method: 'get',
                 headers: {
-                    'Authorization': `JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IlNhbTEyMyIsImV4cCI6MTYwNTI5ODU4NCwiZW1haWwiOiJzYW1AZ21haWwuY29tIn0.484wHy70YtjD-nY6gWmbvvT_8T2rBKA_csFrJFd0eQ8`
+                    'Authorization': `JWT ${this.token}`
                 }
             })
             .then(response => response.json())

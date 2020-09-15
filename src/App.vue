@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <router-view :url='url' @loggedIn='logIn($event)'/>
+      <router-view :user='tokens' :LoggedIn='loggedIn' :url='url' @loggedIn='logIn($event)'/>
 
   </div>
 </template>
