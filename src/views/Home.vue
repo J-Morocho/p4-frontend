@@ -4,7 +4,7 @@
       <Header/>
     </div>
     <div class="media">
-      <Sidebar :url='URL' :cred='token'/>
+      <Sidebar :user='credentials' :url='URL'/>
       <button class="button">New Plant</button>
       <div class="content-container">
         <!-- Pass user data into this card -->
@@ -36,6 +36,7 @@ export default {
       categories: [],
       // TODO: Change login based on App.vue Login value
       loggedIn: this.LoggedIn,
+      credentials: this.user,
       token: this.user.token,
       URL: this.url
     }

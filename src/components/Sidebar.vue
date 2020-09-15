@@ -21,11 +21,12 @@
 <script>
 export default {
     name: 'sidebar',
-    props: ['url', 'cred'],
+    props: ['url', 'user'],
     data: function() {
         return {
             categories: null,
-            token: this.cred,
+            credentials: this.user,
+            token: this.user.token,
             URL: this.url
         }
     },
@@ -44,7 +45,7 @@ export default {
             fetch('http://localhost:8000/api/categories/1/plants', {
             method: 'get',
             headers: {
-                    'Authorization': `JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IlNhbTEyMyIsImV4cCI6MTYwNTI5ODU4NCwiZW1haWwiOiJzYW1AZ21haWwuY29tIn0.484wHy70YtjD-nY6gWmbvvT_8T2rBKA_csFrJFd0eQ8`
+                    'Authorization': `JWT ${this.token}`
                 }
             })
             .then(response => response.json())
