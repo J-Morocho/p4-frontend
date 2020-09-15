@@ -22,7 +22,7 @@ export default {
       // event consists of username, email, and token
       this.credentials = event
       // change the page
-      this.$router.push({ path: 'home', query: { tokens: this.tokens, URL: this.URL }})
+      this.$router.push('/home')
     }
   }
 }

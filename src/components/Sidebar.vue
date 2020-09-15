@@ -5,15 +5,13 @@
                 <div class="p-1">
                     <div class="block">
                     </div>
-                    <menu class="is-custom-mobile">
                         <button class="button">Add category</button>
-                        <!-- TODO: The label attr gets repeated if it is added in -->
                         <b-menu-list label="Categories">
                             <div v-for="category in categories" v-bind:key="category.id">
-                                <b-menu-item v-bind:label="category.name" v-bind:id="category.id" v-on:click="displayPlants"></b-menu-item>
+                                <div v-bind:label="category.name" v-bind:id="category.id" :click="setCategoryId">{{category.name}}</div>
                             </div>
                         </b-menu-list>
-                    </menu>
+                    
                 </div>
             </menu>
         </section>
@@ -34,6 +32,7 @@ export default {
     },
     methods: {
         displayCategories: function() {
+            // Used to list out category names as a list
             fetch(`${this.URL}/api/categories/`, {
                 method: 'get',
                 headers: {
@@ -43,15 +42,18 @@ export default {
             .then(response => response.json())
             .then(data => this.categories = data.results)
         },
-        displayPlants: function() {
-            fetch('http://localhost:8000/api/categories/1/plants', {
-            method: 'get',
-            headers: {
-                    'Authorization': `JWT ${this.token}`
-                }
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
+        setCategoryId: function() {
+            // fetch(`${this.URL}/api/categories/${this.categ}/plants`, {
+            // method: 'get',
+            // headers: {
+            //         'Authorization': `JWT ${this.token}`
+            //     }
+            // })
+            // .then(response => response.json())
+            // .then(data => console.log(data))
+            console.log('click')
+            console.log('a')
+            //this.$emit('category_id', this.category_id)
         }
     },
     beforeMount: function() {
