@@ -6,7 +6,8 @@
     <div class="media">
       <Sidebar :user='credentials' :url='URL'/>
       <button class="button">New Plant</button>
-      <div class="content-container">
+      <div class="content-container" v-for="plant in plants" v-bind:key="plant.id">
+        <p>Hello</p>
         <!-- Pass user data into this card -->
         <!-- This will need to be updated per category -->
         <Card/>
@@ -34,6 +35,7 @@ export default {
   data: function() {
     return {
       categories: [],
+      plants: null,
       // TODO: Change login based on App.vue Login value
       loggedIn: this.LoggedIn,
       credentials: this.user,
@@ -60,7 +62,9 @@ export default {
           }
       })
       .then(response=> response.json())
-      .then(data => console.log(data))
+      .then(data => {
+          this.plants = data.results
+      })
     },
     clearContainer: function(){ 
       return null
