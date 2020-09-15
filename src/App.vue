@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <router-view @loggedIn='logIn($event)'/>
+      <router-view :url='url' @loggedIn='logIn($event)'/>
 
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
     return {
       loggedIn: false,
       tokens: {},
-      URL: 'http://localhost:8000'
+      url: 'http://localhost:8000'
     }
   },
   methods: {
@@ -21,7 +21,7 @@ export default {
       this.loggedIn = true
       this.tokens = event
       // change the page
-      this.$router.push('/home')
+      this.$router.push({ path: 'home', query: { tokens: this.tokens, URL: this.URL }})
     }
   }
 }

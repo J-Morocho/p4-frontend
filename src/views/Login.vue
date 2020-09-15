@@ -22,15 +22,17 @@
 <script>
 export default {
     name: 'Login',
+    props: ['url'],
     data: function() {
         return {
             username: '',
             password: '',
+            link: this.url
         }
     },
     methods: {
         handleLogin: function(){
-            fetch('http://127.0.0.1:8000/auth/users/login/', {
+            fetch(`${this.link}/auth/users/login/`, {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,8 +53,12 @@ export default {
             }
             )
             .then(data => {
-                console.log(data)
-                this.$emit('loggedIn', data)
+                console.log('data',data)
+                if (data) {
+                    this.$emit('loggedIn', data)
+                } else {
+                    alert('Incorrect login')
+                }
             })
         },
     }

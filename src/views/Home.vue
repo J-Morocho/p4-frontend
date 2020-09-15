@@ -1,7 +1,7 @@
 <template>
   <div id="Home">
     <div class="p-0" id="nav">
-      <Header v-bind:URL="URL"/>
+      <Header/>
     </div>
     <div class="media">
       <Sidebar/>
@@ -24,6 +24,7 @@ import Card from '../components/Card'
 
 export default {
   name: 'Home',
+  props: ['url'],
   components: {
     Header,
     Sidebar,
@@ -33,11 +34,14 @@ export default {
   data: function() {
     return {
       loggedIn: false,
-      token: '',
       // Obtained from login page
-
-      URL: 'http://localhost:8000'
+      tokens: '',
+      URL: this.url
     }
+  },
+  before: function() {
+    const {tokens, URL} = this.$route.query
+    console.log(tokens, URL)
   }
   
 }
