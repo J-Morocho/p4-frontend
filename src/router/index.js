@@ -29,7 +29,7 @@ Vue.use(VueRouter)
     path: '/register',
     name: 'Register',
     component: Register
-  }
+  },
 ]
 
 const router = new VueRouter({

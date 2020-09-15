@@ -24,7 +24,7 @@
     </div>
 </template>
 
-<style scoped>
+<style>
 
 .p-1 {
     background-color: #E9E9E9;

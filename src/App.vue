@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <router-view/>
+      <router-view @loggedIn='logIn($event)'/>
 
   </div>
 </template>
@@ -11,10 +11,17 @@ export default {
   name: 'App',
   data: function() {
     return {
-      username: "",
-      password: "",
       loggedIn: false,
-      msg: "Hello"
+      tokens: {},
+      URL: 'http://localhost:8000'
+    }
+  },
+  methods: {
+    logIn: function(event) {
+      this.loggedIn = true
+      this.tokens = event
+      // change the page
+      this.$router.push('/home')
     }
   }
 }
