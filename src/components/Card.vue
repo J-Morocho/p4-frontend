@@ -1,10 +1,10 @@
 <template>
   <div class="card">
       <header class="card-header">
-          <p class="card-header-title">Plant Name</p>
+          <p class="card-header-title">{{name}}</p>
       </header>
       <div class="card-content">
-          <div class="content">Content and stuff</div>
+          <div class="content">{{description}}</div>
       </div>
   </div>
 </template>
@@ -12,10 +12,10 @@
 <script>
 export default {
     name: 'Card',
+    props: ['name', 'description'],
     data: function(){
         return {
-            name: null,
-            description: null,
+            n:null
         }
     }
 }
