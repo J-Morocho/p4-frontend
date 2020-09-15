@@ -5,13 +5,13 @@
                 <div class="p-1">
                     <div class="block">
                     </div>
-                    <b-menu class="is-custom-mobile">
+                    <menu class="is-custom-mobile">
                         <button class="button">Add category</button>
-                        <b-menu-list label="Categories">
-                            <b-menu-item icon="logout" label="Category 1"></b-menu-item>
-                            <b-menu-item icon="logout" label="Category 2"></b-menu-item>
+                        <!-- TODO: The label attr gets repeated if it is added in -->
+                        <b-menu-list label="Categories" v-for="category in categories" v-bind:key="category.id">
+                            <b-menu-item v-bind:label="category.name"></b-menu-item>
                         </b-menu-list>
-                    </b-menu>
+                    </menu>
                 </div>
             </menu>
         </section>
