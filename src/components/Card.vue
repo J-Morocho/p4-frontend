@@ -12,6 +12,12 @@
 <script>
 export default {
     name: 'Card',
+    data: function(){
+        return {
+            name: null,
+            description: null,
+        }
+    }
 }
 </script>
 

@@ -7,12 +7,8 @@
       <Sidebar/>
       <button class="button">New Plant</button>
       <div class="content-container">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        <!-- Pass user data into this card -->
+        <!-- This will need to be updated per category -->
         <Card/>
       </div>
     </div>

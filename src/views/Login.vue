@@ -22,16 +22,17 @@
 <script>
 export default {
     name: 'Login',
+    props: ['url'],
     data: function() {
         return {
-            username: 'Sam123',
-            password: 'password123',
+            username: '',
+            password: '',
         }
     },
     methods: {
         handleLogin: function(){
             console.log('click')
-            fetch('http://127.0.0.1:8000/auth/users/login/', {
+            fetch(`${this.url}/auth/users/login/`, {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
