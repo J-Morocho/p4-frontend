@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container has-background-vegetation">
           <h1 class='title is-1'>Plantr</h1>
           <label for='username'>Username</label>
           <input class='input is-primary' type='text' v-model='username'/>
@@ -58,4 +58,7 @@ export default {
 </script>
 
 <style>
+.container {
+    height: 100vh;
+}
 </style>

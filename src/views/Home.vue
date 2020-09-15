@@ -5,8 +5,9 @@
     </div>
     <div class="media">
       <Sidebar/>
-      
-      <h1>HEY</h1>
+      <div class="content">
+        <button class="button">New Plant</button>
+      </div>
     </div>
   </div>
 </template>
@@ -16,11 +17,12 @@ import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 // import Footer from './components/Footer'
 
+
 export default {
   name: 'Home',
   components: {
     Header,
-    Sidebar
+    Sidebar,
   },
   // for components access
   data: function() {
@@ -52,6 +54,10 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #ffffff;
+}
+
+.content {
+  padding: 20px;
 }
 </style>

@@ -6,6 +6,8 @@ import "buefy/dist/buefy.css";
 
 Vue.use(Buefy);
 
+require("./assets/main.scss")
+
 Vue.config.productionTip = false;
 
 new Vue({
