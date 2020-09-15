@@ -22,7 +22,6 @@
 <script>
 export default {
     name: 'Login',
-    props: ['url'],
     data: function() {
         return {
             username: '',
@@ -31,8 +30,7 @@ export default {
     },
     methods: {
         handleLogin: function(){
-            console.log('click')
-            fetch(`${this.url}/auth/users/login/`, {
+            fetch('http://127.0.0.1:8000/auth/users/login/', {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,15 +41,18 @@ export default {
                 })
             })
             .then(response => 
-            { 
-                if (response.status == 200) {
-                    // Redirect to home if correct credentials are given
-                    this.$router.push('/home')
-                }
-                else {
-                    // TODO: HANDLE INCORRECT CREDENTIALS
+            {
+                if (response.status !== 200) {
+                    // Handle incorrect login
                     response.json()
+                } else {
+                    return response.json()
                 }
+            }
+            )
+            .then(data => {
+                console.log(data)
+                this.$emit('loggedIn', data)
             })
         },
     }

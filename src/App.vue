@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <router-view url='http://localhost:8000' @loggedIn='logIn($event)'/>
+      <router-view @loggedIn='logIn($event)'/>
 
   </div>
 </template>
