@@ -1,12 +1,12 @@
 <template>
   <div id="Home">
-    <div id="nav">
+    <div class="p-0" id="nav">
       <Header v-bind:URL="URL"/>
     </div>
     <div class="media">
       <Sidebar/>
       
-      <!-- <Footer/> -->
+      <h1>HEY</h1>
     </div>
   </div>
 </template>
@@ -45,9 +45,6 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-}
 
 #nav a {
   font-weight: bold;

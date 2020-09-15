@@ -1,5 +1,5 @@
 <template>
-    <b-navbar class='primary'>
+    <b-navbar class='primary has-background-primary'>
         <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/home' }">
                 Plantr
@@ -33,7 +33,4 @@ export default {
     margin: 10px auto
 }
 
-b-navbar {
-  background-color: green;
-}
 </style>
