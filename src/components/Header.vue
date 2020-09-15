@@ -12,9 +12,7 @@
         <template slot="end">
             <b-navbar-item tag="div">
                 <div class="buttons">
-                    <a class="button">
-                        Log out
-                    </a>
+                    <router-link to="/">Logout</router-link>
                 </div>
             </b-navbar-item>
         </template>
