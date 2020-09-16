@@ -4,12 +4,13 @@
       <Header/>
     </div>
     <div class="media">
-      <!-- Add listener to sidebar -->
       <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
-      <button class="button">New Plant</button>
-      <div class='c'>
-        <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
-          <Card v-bind:name='plant.name' v-bind:description='plant.description'/>
+      <div class="content">
+        <button class="button is-info is-small">New Plant</button>
+        <div class='c'>
+          <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
+            <Card v-bind:name='plant.name' v-bind:description='plant.description'/>
+          </div>
         </div>
       </div>
     </div>
@@ -117,6 +118,9 @@ export default {
   flex-wrap: wrap;
 }
 
+.content {
+  padding: 20px;
+}
 .content-container {
   padding: 20px;
   display: flex;

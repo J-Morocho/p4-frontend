@@ -7,6 +7,7 @@
         </template>
         <!-- Will need to add categories in here -->
         <template slot="start">
+            <Sidebar />
         </template>
 
         <template slot="end">
@@ -20,8 +21,12 @@
 </template>
 
 <script>
+import Sidebar from './Sidebar.vue'
 export default {
   name: "Header",
+  components: {
+      Sidebar
+  }
 };
 </script>
 

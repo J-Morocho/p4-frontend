@@ -2,10 +2,10 @@
     <aside class="menu">
         <section class="sidebar-layout">
             <menu>
+                <button class="button is-info is-small">Add category</button>
                 <div class="p-1">
                     <div class="block">
                     </div>
-                        <button class="button">Add category</button>
                         <b-menu-list label="Categories">
                             <div class='category-wrapper' v-for="category in categories" v-bind:key="category.id">
                                 <div v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
