@@ -7,7 +7,7 @@
                     </div>
                         <button class="button">Add category</button>
                         <b-menu-list label="Categories">
-                            <div v-for="category in categories" v-bind:key="category.id">
+                            <div class='category-wrapper' v-for="category in categories" v-bind:key="category.id">
                                 <div v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
                             </div>
                         </b-menu-list>
@@ -68,9 +68,24 @@ export default {
     background-color: #E9E9E9;
 }
 
+ul {
+    text-align: left;
+}
+.menu-label {
+    text-align: left;
+}
+
+.menu-list {
+    padding-bottom: 10px;
+}
+
 .menu{
     height: 100vh;
-    background-color: #E9E9E9;;
-};
+    background-color: #E9E9E9;
+}
+
+.category-wrapper {
+    padding-bottom: 20px;
+}
 </style>
 
