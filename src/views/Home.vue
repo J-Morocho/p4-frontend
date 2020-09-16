@@ -5,7 +5,7 @@
     </div>
     <div class="media">
       <!-- Add listener to sidebar -->
-      <Sidebar :user='credentials' :url='URL'/>
+      <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
       <button class="button">New Plant</button>
       <div class='c'>
         <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
@@ -66,14 +66,16 @@ export default {
       .then(data => {this.plants = data.results})
     },
     getPlantsInCategory: function(){
-      fetch(`${this.URL}/api/categories/${this.category_id}/plants/`, {
+      fetch(`${this.URL}/api/categories/${event.target.id}/plants`, {
         method: 'get',
         headers: {
           'Authorization': `JWT ${this.token}`
         }
       })
       .then(response => response.json())
-      .then(data => {this.plants = data.results})
+      .then(data => {
+        this.plants = data.results
+        })
     },
     clearContainer: function(){ 
       return null
@@ -119,5 +121,9 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
+}
+
+.card-container {
+  margin: 10px;
 }
 </style>

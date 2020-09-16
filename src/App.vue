@@ -11,6 +11,7 @@ export default {
   name: 'App',
   data: function() {
     return {
+      credentials: null,
       loggedIn: false,
       tokens: {},
       url: 'http://localhost:8000'

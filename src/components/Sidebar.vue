@@ -8,7 +8,7 @@
                         <button class="button">Add category</button>
                         <b-menu-list label="Categories">
                             <div v-for="category in categories" v-bind:key="category.id">
-                                <div v-bind:label="category.name" v-bind:id="category.id" :click="setCategoryId">{{category.name}}</div>
+                                <div v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
                             </div>
                         </b-menu-list>
                     
@@ -24,6 +24,7 @@ export default {
     props: ['url', 'user'],
     data: function() {
         return {
+            category_id: null,
             categories: null,
             credentials: this.user,
             token: this.user.token,
@@ -42,7 +43,7 @@ export default {
             .then(response => response.json())
             .then(data => this.categories = data.results)
         },
-        setCategoryId: function() {
+        setCategoryId: function(event) {
             // fetch(`${this.URL}/api/categories/${this.categ}/plants`, {
             // method: 'get',
             // headers: {
@@ -51,9 +52,8 @@ export default {
             // })
             // .then(response => response.json())
             // .then(data => console.log(data))
-            console.log('click')
-            console.log('a')
-            //this.$emit('category_id', this.category_id)
+            this.category_id = event.target.id
+            this.$emit('category_id', this.category_id)
         }
     },
     beforeMount: function() {

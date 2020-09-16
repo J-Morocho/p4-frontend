@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+.card-header-title {
+    font-size: 10px;
+}
 </style>
