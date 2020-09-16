@@ -17,7 +17,9 @@
           <input class='input is-primary' type='email' v-model='email'/>           
           <!-- Redirect once status OK is recieved -->
           <br>
-          <router-link to="/register" tag="button" v-on:click.native="handleRegistration">Register</router-link>
+          <b-button rounded>
+            <router-link to="/register" v-on:click.native="handleRegistration">Register</router-link>
+          </b-button>
     </div>
 </template>
 

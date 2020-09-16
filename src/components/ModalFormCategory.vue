@@ -6,13 +6,13 @@
                 </header>
                 <section class="modal-card-body">
                     <b-field label="Category Name">
-                        <b-input type="text" v-bind:category_name='category_name' required></b-input>
+                        <b-input type="text" v-model='category_name' required></b-input>
                     </b-field>
                 </section>
 
                 <footer class="modal-card-foot">
                     <button class="button" type="button"  @click="$emit('close')">Close</button>
-                    <button class="button is-primary" :click="createCategory">Add</button>
+                    <button class="button is-primary" v-on:click="createCategory">Add</button>
                 </footer>
             </div>
         </form>
@@ -24,7 +24,7 @@ export default {
     props: ['canCancel', 'url', 'user'],
     data: function() {
         return {
-            category_name: null,
+            category_name: '',
             credentials: this.user,
             token: this.user.token,
             URL: this.url,

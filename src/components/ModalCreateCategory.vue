@@ -13,7 +13,7 @@
             aria-role="dialog"
             aria-modal>
             
-            <ModalFormCategory v-bind="formProps"/>
+            <ModalFormCategory :user='credentials' :url='URL'/>
         </b-modal>
     </section>
 </template>
@@ -23,18 +23,17 @@ import ModalFormCategory from './ModalFormCategory'
 
 export default {
     name: 'ModalCreateCategory',
-    props: ['user', 'credentials'],
+    props: ['user', 'url'],
     components: {
         ModalFormCategory
     },
     data: function() {
         return {
             isComponentModalActive: false,
-            formProps: {
-                user: this.user,
-                credentials: this.credentials
-            }
+            credentials: this.user,
+            URL: this.url
         }
     }
 }
+
 </script>

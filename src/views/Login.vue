@@ -13,9 +13,13 @@
                 </b-input>
           </b-field> -->
           <br>
-          <router-link to="" v-on:click.native="handleLogin">Login</router-link>
+          <b-button class="is-medium" type="is-info" v-on:click="handleLogin" rounded>Login</b-button>
           <br>
-          <router-link to="/register" tag="button">Register</router-link>
+          <b-button class="is-medium"
+                    tag="router-link" 
+                    to="/register"
+                    type="is-info" 
+                    rounded>Register</b-button>
         </div>
 </template>
 
@@ -44,9 +48,10 @@ export default {
             })
             .then(response => 
             {
-                if (response.status !== 200) {
-                    // Handle incorrect login
-                    return response.json()
+                if (!response.ok) {
+                    // When response.ok = false
+                    // Handle incorrect login credentials
+                    response.json()
                 } else {
                     return response.json()
                 }
