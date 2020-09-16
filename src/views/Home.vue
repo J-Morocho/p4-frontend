@@ -4,7 +4,7 @@
       <Header/>
     </div>
     <div class="media">
-      <show-at breakpoint="mediumAndAbove">
+      <show-at :breakpoints="{medium: 1365}" breakpoint="medium">
         <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
       </show-at>
       <div class="content">

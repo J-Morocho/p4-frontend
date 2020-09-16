@@ -11,7 +11,13 @@
             WE NEED TO HIDE THE DESKTOP SIDEBAR WHEN ON MOBILE.
             WE CAN GENERATE CATEGORIES ON THE FLY IN HERE THEN HIDE THEM
             IF ON DESKTOP-->
-            <Sidebar />
+            <hide-at :breakpoints="{medium: 1534}" breakpoint="medium">
+                <!-- <Sidebar /> -->
+            </hide-at>
+            <show-at breakpoint="small">
+                <Sidebar />
+            </show-at>
+
         </template>
 
         <template slot="end">
@@ -26,10 +32,14 @@
 
 <script>
 import Sidebar from './Sidebar.vue'
+import {hideAt, showAt} from 'vue-breakpoints'
+
 export default {
   name: "Header",
   components: {
-      Sidebar
+      Sidebar,
+      hideAt,
+      showAt
   }
 };
 </script>
