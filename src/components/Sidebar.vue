@@ -8,7 +8,7 @@
                     </div>
                         <b-menu-list label="Categories">
                             <div class='category-wrapper' v-for="category in categories" v-bind:key="category.id">
-                                <div v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
+                                <div class="is-active" v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
                             </div>
                         </b-menu-list>
                     
@@ -44,14 +44,6 @@ export default {
             .then(data => this.categories = data.results)
         },
         setCategoryId: function(event) {
-            // fetch(`${this.URL}/api/categories/${this.categ}/plants`, {
-            // method: 'get',
-            // headers: {
-            //         'Authorization': `JWT ${this.token}`
-            //     }
-            // })
-            // .then(response => response.json())
-            // .then(data => console.log(data))
             this.category_id = event.target.id
             this.$emit('category_id', this.category_id)
         }
