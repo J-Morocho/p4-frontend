@@ -6,9 +6,7 @@
       <div class="card-content">
           <div class="content">{{description}}</div>
       </div>
-      <v-card-actions>
-      <v-btn text>Button</v-btn>
-      </v-card-actions>
+      
   </div>
 </template>
 

@@ -13,8 +13,8 @@
           <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
             <Card v-bind:name='plant.name' v-bind:description='plant.description'/>
           </div>
-          <ModalCreateCategory/>
         </div>
+        <ModalCreateCategory/>
       </div>
     </div>
   </div>
