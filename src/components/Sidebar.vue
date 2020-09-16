@@ -2,7 +2,7 @@
     <aside class="menu is-desktop">
         <section class="sidebar-layout">
             <menu>
-                <button class="button is-info is-small">Add category</button>
+                <ModalCreateCategory :url='URL' :user='credentials' />
                 <div class="p-1">
                     <div class="block">
                     </div>
@@ -19,9 +19,14 @@
 </template>
 
 <script>
+import ModalCreateCategory from './ModalCreateCategory'
+
 export default {
     name: 'sidebar',
     props: ['url', 'user'],
+    components: {
+        ModalCreateCategory,
+    },
     data: function() {
         return {
             category_id: null,

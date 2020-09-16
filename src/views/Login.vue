@@ -46,7 +46,7 @@ export default {
             {
                 if (response.status !== 200) {
                     // Handle incorrect login
-                    response.json()
+                    return response.json()
                 } else {
                     return response.json()
                 }

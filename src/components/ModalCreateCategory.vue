@@ -1,8 +1,8 @@
 <template>
     <section>
-        <button class="button is-primary is-medium"
+        <button class="button is-info is-small"
             @click="isComponentModalActive = true">
-            Launch component modal
+            New Category
         </button>
 
         <b-modal 
@@ -23,6 +23,7 @@ import ModalFormCategory from './ModalFormCategory'
 
 export default {
     name: 'ModalCreateCategory',
+    props: ['user', 'credentials'],
     components: {
         ModalFormCategory
     },
@@ -30,8 +31,8 @@ export default {
         return {
             isComponentModalActive: false,
             formProps: {
-                email: 'evan@you.com',
-                password: 'testing'
+                user: this.user,
+                credentials: this.credentials
             }
         }
     }

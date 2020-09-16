@@ -14,7 +14,6 @@
             <Card v-bind:name='plant.name' v-bind:description='plant.description'/>
           </div>
         </div>
-        <ModalCreateCategory/>
       </div>
     </div>
   </div>
@@ -26,8 +25,6 @@ import Sidebar from '../components/Sidebar'
 // import Footer from './components/Footer'
 import Card from '../components/Card'
 import {showAt} from 'vue-breakpoints'
-import ModalCreateCategory from '../components/ModalCreateCategory'
-
 
 export default {
   name: 'Home',
@@ -37,7 +34,7 @@ export default {
     Sidebar,
     Card,
     showAt,
-    ModalCreateCategory
+    
   },
   // for components access
   data: function() {
