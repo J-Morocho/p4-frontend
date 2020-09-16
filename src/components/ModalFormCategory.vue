@@ -12,7 +12,7 @@
 
                 <footer class="modal-card-foot">
                     <button class="button" type="button"  @click="$emit('close')">Close</button>
-                    <button class="button is-primary" :click="createCategory">Add Category</button>
+                    <button class="button is-primary" :click="createCategory">Add</button>
                 </footer>
             </div>
         </form>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    name: 'ModalForm',
+    name: 'ModalFormCategory',
     props: ['canCancel', 'url', 'user'],
     data: function() {
         return {

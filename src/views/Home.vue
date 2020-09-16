@@ -8,7 +8,7 @@
         <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
       </show-at>
       <div class="content">
-        <button class="button is-info is-small">New Plant</button>
+        <ModalCreatePlant/>
         <div class='c'>
           <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
             <Card v-bind:name='plant.name' v-bind:description='plant.description'/>
@@ -22,7 +22,7 @@
 <script>
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
-// import Footer from './components/Footer'
+import ModalCreatePlant from '../components/ModalCreatePlant'
 import Card from '../components/Card'
 import {showAt} from 'vue-breakpoints'
 
@@ -34,7 +34,7 @@ export default {
     Sidebar,
     Card,
     showAt,
-    
+    ModalCreatePlant,
   },
   // for components access
   data: function() {
