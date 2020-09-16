@@ -5,8 +5,12 @@
                 Plantr
             </b-navbar-item>
         </template>
-        <!-- Will need to add categories in here -->
         <template slot="start">
+            <!-- TODO: FIX ON MOBILE AND DESKTOP 
+            SLOT START CAUSES THE WHOLE SIDEBAR TO DISPLAY ON THE NAVBAR
+            WE NEED TO HIDE THE DESKTOP SIDEBAR WHEN ON MOBILE.
+            WE CAN GENERATE CATEGORIES ON THE FLY IN HERE THEN HIDE THEM
+            IF ON DESKTOP-->
             <Sidebar />
         </template>
 

@@ -4,7 +4,9 @@
       <Header/>
     </div>
     <div class="media">
-      <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
+      <show-at breakpoint="mediumAndAbove">
+        <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
+      </show-at>
       <div class="content">
         <button class="button is-info is-small">New Plant</button>
         <div class='c'>
@@ -22,6 +24,7 @@ import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 // import Footer from './components/Footer'
 import Card from '../components/Card'
+import {showAt} from 'vue-breakpoints'
 
 
 export default {
@@ -31,6 +34,7 @@ export default {
     Header,
     Sidebar,
     Card,
+    showAt,
   },
   // for components access
   data: function() {
@@ -130,4 +134,6 @@ export default {
 .card-container {
   margin: 10px;
 }
+
+
 </style>

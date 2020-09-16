@@ -1,5 +1,5 @@
 <template>
-    <aside class="menu">
+    <aside class="menu is-desktop">
         <section class="sidebar-layout">
             <menu>
                 <button class="button is-info is-small">Add category</button>
