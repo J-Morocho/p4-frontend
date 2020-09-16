@@ -1,7 +1,7 @@
 <template>
   <div id="Home">
     <div class="p-0" id="nav">
-      <Header/>
+      <Header :user='credentials' :url='URL'/>
     </div>
     <div class="media">
       <show-at :breakpoints="{medium: 1365}" breakpoint="medium">
