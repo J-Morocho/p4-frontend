@@ -17,9 +17,16 @@
           <input class='input is-primary' type='email' v-model='email'/>           
           <!-- Redirect once status OK is recieved -->
           <br>
-          <b-button rounded>
-            <router-link to="/register" v-on:click.native="handleRegistration">Register</router-link>
-          </b-button>
+          
+          <b-button class="is-medium"
+                    tag="router-link" 
+                    to="/register"
+                    type="is-info" 
+                    v-on:click.native="handleRegistration" 
+                    rounded> Register</b-button>
+          <br>
+          <label for='login'>Have an account? Log in instead:</label>
+          <b-button class="is-medium" type="is-info" tag="router-link" to="/" rounded>Login</b-button>
     </div>
 </template>
 
@@ -57,16 +64,12 @@ export default {
                 if (response.ok) {
                     return response.json()
                 } else {
-                    console.log(response)
                     alert('something went wrong')
                 }
             })
             .then(data => {
-                console.log(data)
                 if (data) {
                     this.$router.push('/home')
-                } else {
-                    console.log(data)
                 }
             })
         }

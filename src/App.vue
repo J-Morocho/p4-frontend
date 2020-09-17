@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <router-view :user='credentials' :LoggedIn='loggedIn' :url='url' @loggedIn='logIn($event)'/>
+      <router-view :user='credentials' :LoggedIn='loggedIn' :url='URL' @loggedIn='logIn($event)'/>
 
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
       credentials: null,
       loggedIn: false,
       tokens: {},
-      url: 'http://localhost:8000'
+      URL: 'http://localhost:8000'
     }
   },
   methods: {

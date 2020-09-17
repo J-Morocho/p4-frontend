@@ -6,12 +6,6 @@
 
           <label for='password'>Password</label>
           <input class='input is-primary' type='password' v-model='password'/>
-          <!-- <b-field>
-                <b-input type="password"
-                    placeholder="Password reveal input"
-                    password-reveal>
-                </b-input>
-          </b-field> -->
           <br>
           <b-button class="is-medium" type="is-info" v-on:click="handleLogin" rounded>Login</b-button>
           <br>
@@ -19,8 +13,8 @@
                     tag="router-link" 
                     to="/register"
                     type="is-info" 
-                    rounded>Register</b-button>
-        </div>
+                    rounded> Register</b-button>
+    </div>
 </template>
 
 <script>
@@ -31,12 +25,12 @@ export default {
         return {
             username: '',
             password: '',
-            link: this.url
+            URL: this.url
         }
     },
     methods: {
         handleLogin: function(){
-            fetch(`${this.link}/auth/users/login/`, {
+            fetch(`${this.URL}/auth/users/login/`, {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
