@@ -8,7 +8,7 @@
         <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
       </show-at>
       <div class="content">
-        <ModalCreatePlant/>
+        <ModalCreatePlant :user='credentials' :url='URL' :cat_id='category_id'/>
         <div class='c'>
           <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
             <Card v-bind:name='plant.name' v-bind:description='plant.description'/>
@@ -40,6 +40,7 @@ export default {
   data: function() {
     return {
       categories: [],
+      // Default no category selected
       category_id: null,
       plants: null,
       // TODO: Change login based on App.vue Login value
@@ -73,6 +74,7 @@ export default {
     getPlantsInCategory: function(){
       // Set category_id of category that is currently clicked
       this.category_id = event.target.id
+      console.log(this.category_id)
       fetch(`${this.URL}/api/categories/${event.target.id}/plants`, {
         method: 'get',
         headers: {
@@ -83,9 +85,6 @@ export default {
       .then(data => {
         this.plants = data.results
         })
-    },
-    clearContainer: function(){ 
-      return null
     },
   },
   before: function() {

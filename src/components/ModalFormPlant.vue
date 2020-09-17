@@ -6,13 +6,13 @@
                 </header>
                 <section class="modal-card-body">
                     <b-field label="Plant Information">
-                        <b-input type="text" v-bind:category_name='category_name' required></b-input>
+                        <b-input type="text" v-bind:plant_name='plant_name' required></b-input>
                     </b-field>
                 </section>
 
                 <footer class="modal-card-foot">
                     <button class="button" type="button"  @click="$emit('close')">Close</button>
-                    <button class="button is-primary" :click="createCategory">Add</button>
+                    <button class="button is-primary" v-on:click="createPlant">Add</button>
                 </footer>
             </div>
         </form>
@@ -21,19 +21,22 @@
 <script>
 export default {
     name: 'ModalFormPlant',
-    props: ['canCancel', 'url', 'user'],
+    props: ['canCancel', 'url', 'user', 'cat_id'],
     data: function() {
         return {
-            category_id: null,
+            plant_name: '',
+            category_id: this.cat_id,
             credentials: this.user,
             token: this.user.token,
             URL: this.url,
         }
     },
     methods: {
-        createCategory: function() {
-            const data = {name: this.category_name} 
-            fetch(`${this.URL}/api/categories/${this.category_id}/plants`, {
+        createPlant: function() {
+            console.log('click')
+            console.log(this.category_id)
+            const data = {name: this.plant_name, category: this.category_id} 
+            fetch(`${this.URL}/api/plants/`, {
               method: 'post',
               headers: {
                   'Content-Type': 'application/json',
@@ -41,8 +44,21 @@ export default {
               },
               body: JSON.stringify(data)
             })
-            .then(response => response.json())
-            .then(data => console.log(data))
+            .then(response => {
+                console.log(response)
+                if (response.ok) {
+                    response.json()
+                } else {
+                    return response.json()
+                }
+            })
+            .then(data => {
+                if (data) {
+                    console.log('data', data)
+                    this.$emit('add_plant_event', data)
+                    this.$emit('close')
+                }
+            })
 
         }
     }

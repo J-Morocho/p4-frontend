@@ -12,8 +12,8 @@
             :destroy-on-hide="false"
             aria-role="dialog"
             aria-modal>
-            
-            <ModalFormPlant v-bind="formProps"/>
+            <!-- We still need to refresh after plants are updated -->
+            <ModalFormPlant :url='URL' :user='credentials' :cat_id='category_id' @close='isComponentModalActive = false'/>
         </b-modal>
     </section>
 </template>
@@ -23,18 +23,17 @@ import ModalFormPlant from './ModalFormPlant'
 
 export default {
     name: 'ModalCreatePlant',
-    props: ['user', 'credentials'],
+    props: ['user', 'url', 'cat_id'],
     components: {
         ModalFormPlant
     },
     data: function() {
         return {
             isComponentModalActive: false,
-            formProps: {
-                user: this.user,
-                credentials: this.credentials
-            }
+            category_id: this.cat_id,
+            credentials: this.user,
+            URL: this.url
         }
-    }
+    },
 }
 </script>
