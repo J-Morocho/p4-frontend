@@ -6,7 +6,7 @@
                 </header>
                 <section class="modal-card-body">
                     <b-field label="Plant Information">
-                        <b-input type="text" v-bind:plant_name='plant_name' required></b-input>
+                        <b-input type="text" v-model='plant_name' required></b-input>
                     </b-field>
                 </section>
 
