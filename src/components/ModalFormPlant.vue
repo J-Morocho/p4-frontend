@@ -8,6 +8,13 @@
                     <b-field label="Plant Information">
                         <b-input type="text" v-model='plant_name' required></b-input>
                     </b-field>
+                    <b-field label="Description">
+                        <b-input max-length="200" type="textarea"></b-input>
+                    </b-field>
+                    <b-field label="Watering Frequency">
+                        <b-input v-model.number='frequency'></b-input>
+                        <p>Times per day</p>
+                    </b-field>
                 </section>
 
                 <footer class="modal-card-foot">
@@ -25,6 +32,7 @@ export default {
     data: function() {
         return {
             plant_name: '',
+            frequency: '',
             category_id: this.cat_id,
             credentials: this.user,
             token: this.user.token,
@@ -46,7 +54,6 @@ export default {
               body: JSON.stringify(data)
             })
             .then(response => {
-                console.log(response)
                 if (!response.ok) {
                     response.json()
                 } else {
@@ -55,7 +62,6 @@ export default {
             })
             .then(data => {
                 if (data) {
-                    console.log('data', data)
                     this.$emit('add_plant_event', data)
                     this.$emit('close')
                 }
@@ -65,6 +71,8 @@ export default {
     }
 
 }
+
+
 </script>
 
 <style>

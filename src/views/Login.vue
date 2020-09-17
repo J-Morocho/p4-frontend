@@ -53,6 +53,7 @@ export default {
             )
             .then(data => {
                 if (data) {
+                    localStorage.setItem("vOneLocalStorage", data);  
                     this.$emit('loggedIn', data)
                 } else {
                     alert('Incorrect login')
