@@ -13,7 +13,10 @@
             aria-role="dialog"
             aria-modal>
             <!-- We still need to refresh after plants are updated -->
-            <ModalFormPlant :url='URL' :user='credentials' :cat_id='category_id' @close='isComponentModalActive = false'/>
+            <ModalFormPlant :url='URL'
+                            :user='credentials' 
+                            :cat_id='category_id' 
+                            @close='isComponentModalActive = false'/>
         </b-modal>
     </section>
 </template>
@@ -35,8 +38,5 @@ export default {
             URL: this.url
         }
     },
-    beforeMount: function() {
-        console.log(this.cat_id)
-    }
 }
 </script>

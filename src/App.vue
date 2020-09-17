@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <router-view :user='credentials' :LoggedIn='loggedIn' :url='URL' @loggedIn='logIn($event)'/>
+      <router-view :user='credentials' :tokenLS='token' :LoggedIn='loggedIn' :url='URL' @loggedIn='logIn($event)'/>
 
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
     return {
       credentials: null,
       loggedIn: false,
-      tokens: {},
+      token: '',
       URL: 'http://localhost:8000'
     }
   },
@@ -24,7 +24,13 @@ export default {
       this.credentials = event
       // change the page
       this.$router.push('/home')
+    },
+    setToken: function() {
+      this.token = localStorage.getItem('data')
     }
+  },
+  beforeMount: function () {
+    this.setToken()
   }
 }
 </script>

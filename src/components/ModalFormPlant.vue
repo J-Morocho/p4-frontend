@@ -9,7 +9,7 @@
                         <b-input type="text" v-model='plant_name' required></b-input>
                     </b-field>
                     <b-field label="Description">
-                        <b-input max-length="200" type="textarea"></b-input>
+                        <b-input max-length="200" type="textarea" v-model='description' required></b-input>
                     </b-field>
                     <b-field label="Watering Frequency">
                         <b-input v-model.number='frequency'></b-input>
@@ -28,14 +28,15 @@
 <script>
 export default {
     name: 'ModalFormPlant',
-    props: ['canCancel', 'url', 'user', 'cat_id'],
+    props: ['cat_id', 'canCancel', 'url', 'user'],
     data: function() {
         return {
             plant_name: '',
             frequency: '',
+            description: null,
             category_id: this.cat_id,
             credentials: this.user,
-            token: this.user.token,
+            token: '',
             URL: this.url,
         }
     },
@@ -44,7 +45,7 @@ export default {
             console.log('click')
             console.log(this.category_id)
             console.log('cat_id', this.cat_id)
-            let data = {name: this.plant_name, category: this.category_id} 
+            let data = {name: this.plant_name, category: this.category_id,} 
             fetch(`${this.URL}/api/plants/`, {
               method: 'post',
               headers: {
@@ -68,6 +69,9 @@ export default {
             })
 
         }
+    },
+    beforeMount: function() {
+        this.token = localStorage.getItem('data')
     }
 
 }

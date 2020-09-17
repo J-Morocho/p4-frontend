@@ -26,7 +26,7 @@ export default {
         return {
             category_name: '',
             credentials: this.user,
-            token: this.user.token,
+            token: '',
             URL: this.url,
         }
     },
@@ -57,6 +57,9 @@ export default {
                 }
             })
         },
+    },
+    beforeMount: function() {
+        this.token = localStorage.getItem('data')
     }
 
 }

@@ -7,7 +7,7 @@
                     <div class="block">
                     </div>
                         <b-menu-list label="Categories">
-                            <div class='category-wrapper' v-for="category in categories" v-bind:key="category.id">
+                            <div class='category-wrapper is-active' v-for="category in categories" v-bind:key="category.id">
                                 <div class="is-active" v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
                             </div>
                         </b-menu-list>
@@ -32,7 +32,7 @@ export default {
             category_id: null,
             categories: null,
             credentials: this.user,
-            token: this.user.token,
+            token: '',
             URL: this.url
         }
     },
@@ -54,6 +54,7 @@ export default {
         }
     },
     beforeMount: function() {
+        this.token = localStorage.getItem('data')
         this.displayCategories()
     }
 }

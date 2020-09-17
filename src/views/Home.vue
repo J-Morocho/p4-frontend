@@ -28,7 +28,7 @@ import {showAt} from 'vue-breakpoints'
 
 export default {
   name: 'Home',
-  props: ['url', 'LoggedIn', 'user'],
+  props: ['url', 'LoggedIn', 'user', 'tokenLS'],
   components: {
     Header,
     Sidebar,
@@ -46,7 +46,7 @@ export default {
       // TODO: Change login based on App.vue Login value
       loggedIn: this.LoggedIn,
       credentials: this.user,
-      token: this.user.token,
+      token: '',
       URL: this.url
     }
   },
@@ -92,6 +92,7 @@ export default {
     console.log(tokens, URL)
   },
   beforeMount: function() {
+    this.token = localStorage.getItem('data')
     this.displayCategories()
     this.getAllPlants()
   }

@@ -6,6 +6,9 @@
       <div class="card-content">
           <div class="content">{{description}}</div>
       </div>
+      <footer class="card-footer">
+          <button class="card-footer-item">Watered</button>
+      </footer>
       
   </div>
 </template>

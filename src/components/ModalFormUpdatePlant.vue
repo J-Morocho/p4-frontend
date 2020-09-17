@@ -30,7 +30,7 @@ export default {
             is_watered: null,
             category_id: null,
             credentials: this.user,
-            token: this.user.token,
+            token: '',
             URL: this.url,
         }
     },
@@ -49,6 +49,9 @@ export default {
             .then(data => console.log(data))
 
         }
+    },
+    beforeMount: function() {
+        this.token = localStorage.getItem('data')
     }
 
 }
