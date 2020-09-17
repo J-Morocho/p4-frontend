@@ -43,12 +43,20 @@ export default {
               },
               body: JSON.stringify(data)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    response.json()
+                    } else {
+                        return response.json()    
+                    }
+            })
             .then(data => {
-                this.$emit('add_category_event', data)
-                })
-
-        }
+                if (data) {
+                    this.$emit('add_category_event', data)
+                    this.$emit('close')
+                }
+            })
+        },
     }
 
 }
