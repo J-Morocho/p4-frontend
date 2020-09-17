@@ -35,7 +35,8 @@ export default {
         createPlant: function() {
             console.log('click')
             console.log(this.category_id)
-            const data = {name: this.plant_name, category: this.category_id} 
+            console.log('cat_id', this.cat_id)
+            let data = {name: this.plant_name, category: this.category_id} 
             fetch(`${this.URL}/api/plants/`, {
               method: 'post',
               headers: {
@@ -46,7 +47,7 @@ export default {
             })
             .then(response => {
                 console.log(response)
-                if (response.ok) {
+                if (!response.ok) {
                     response.json()
                 } else {
                     return response.json()

@@ -23,7 +23,7 @@ import ModalFormPlant from './ModalFormPlant'
 
 export default {
     name: 'ModalCreatePlant',
-    props: ['user', 'url', 'cat_id'],
+    props: ['cat_id', 'user', 'url',],
     components: {
         ModalFormPlant
     },
@@ -35,5 +35,8 @@ export default {
             URL: this.url
         }
     },
+    beforeMount: function() {
+        console.log(this.cat_id)
+    }
 }
 </script>
