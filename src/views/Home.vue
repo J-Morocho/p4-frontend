@@ -71,6 +71,8 @@ export default {
       .then(data => {this.plants = data.results})
     },
     getPlantsInCategory: function(){
+      // Set category_id of category that is currently clicked
+      this.category_id = event.target.id
       fetch(`${this.URL}/api/categories/${event.target.id}/plants`, {
         method: 'get',
         headers: {

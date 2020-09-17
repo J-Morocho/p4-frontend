@@ -32,6 +32,8 @@ export default {
     },
     methods: {
         createCategory: function() {
+            // After calling this function we need to update categories list in sidebar
+            // Let's emit something
             const data = {name: this.category_name} 
             fetch(`${this.URL}/api/categories/`, {
               method: 'post',
@@ -42,7 +44,9 @@ export default {
               body: JSON.stringify(data)
             })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                this.$emit('add_category_event', data)
+                })
 
         }
     }

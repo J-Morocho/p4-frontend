@@ -13,7 +13,7 @@
             aria-role="dialog"
             aria-modal>
             
-            <ModalFormCategory :user='credentials' :url='URL'/>
+            <ModalFormCategory :user='credentials' :url='URL' @add_category_event='emiter($event)'/>
         </b-modal>
     </section>
 </template>
@@ -32,6 +32,11 @@ export default {
             isComponentModalActive: false,
             credentials: this.user,
             URL: this.url
+        }
+    },
+    methods: {
+        emiter: function(event) {
+            this.$emit('add_category_event', event)
         }
     }
 }

@@ -2,7 +2,7 @@
     <aside class="menu is-desktop">
         <section class="sidebar-layout">
             <menu>
-                <ModalCreateCategory :url='URL' :user='credentials' />
+                <ModalCreateCategory :url='URL' :user='credentials' @add_category_event='displayCategories'/>
                 <div class="p-1">
                     <div class="block">
                     </div>
