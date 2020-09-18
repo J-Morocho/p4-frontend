@@ -7,9 +7,9 @@
           <label for='password'>Password</label>
           <input class='input is-primary' type='password' v-model='password'/>
           <br>
-          <b-button class="is-medium" type="is-info" v-on:click="handleLogin" rounded>Login</b-button>
+          <b-button class="is-medium is-vsecond" type="is-info" v-on:click="handleLogin" rounded>Login</b-button>
           <br>
-          <b-button class="is-medium"
+          <b-button class="is-medium is-vsecond"
                     tag="router-link" 
                     to="/register"
                     type="is-info" 

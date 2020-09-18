@@ -2,16 +2,13 @@
     <aside class="menu is-desktop">
         <section class="sidebar-layout">
             <menu>
-                <ModalCreateCategory :url='URL' :user='credentials' @add_category_event='displayCategories'/>
+                <ModalCreateCategory class="cst-btn" :url='URL' :user='credentials' @add_category_event='displayCategories'/>
                 <div class="p-1">
-                    <div class="block">
-                    </div>
-                        <b-menu-list label="Categories">
-                            <div class='category-wrapper is-active' v-for="category in categories" v-bind:key="category.id">
-                                <div class="is-active" v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
-                            </div>
-                        </b-menu-list>
-                    
+                    <b-menu-list class="menu-list" label="Categories">
+                        <div class='category-wrapper is-active' v-for="category in categories" v-bind:key="category.id">
+                            <div class="is-active" v-bind:label="category.name" v-bind:id="category.id" v-on:click="setCategoryId">{{category.name}}</div>
+                        </div>
+                    </b-menu-list>
                 </div>
             </menu>
         </section>
@@ -78,13 +75,24 @@ ul {
     padding-bottom: 10px;
 }
 
+menu {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .menu{
     height: 100vh;
     background-color: #E9E9E9;
 }
 
+
 .category-wrapper {
     padding-bottom: 20px;
+}
+
+.cst-btn {
+    padding: 20px;
 }
 </style>
 

@@ -44,7 +44,7 @@ export default {
     methods: {
         createPlant: function() {
             this.category_id = localStorage.getItem('categoryId')
-            console.log('category id', this.category_id)
+
             const data = {name: this.plant_name, category: this.category_id,
                         description: this.description}
 

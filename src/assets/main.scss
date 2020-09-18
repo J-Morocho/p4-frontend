@@ -4,6 +4,8 @@
 // Set your colors
 $vegetation: #79C55E;
 $vegetation-invert: findColorInvert($vegetation);
+$vsecond: #26537e;
+$vsecond-invert: findColorInvert($vsecond);
 $primary: #8c67ef;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
@@ -12,6 +14,7 @@ $twitter-invert: findColorInvert($twitter);
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
     "vegetation": ($vegetation, $vegetation-invert),
+    "vsecond": ($vsecond, $vsecond-invert),
     "white": ($white, $black),
     "black": ($black, $white),
     "light": ($light, $light-invert),

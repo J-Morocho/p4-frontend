@@ -5,7 +5,9 @@
           <div class="content">{{description}}</div>
       </div>
       <footer class="card-footer">
-          <button class="card-footer-item">Watered</button>
+          <a class="card-footer-item up">Water Plant</a>
+          <a class="card-footer-item up">Edit</a>
+          <a class="card-footer-item del">Delete</a>
       </footer>
       
   </div>
@@ -28,5 +30,12 @@ export default {
     font-size: 10px;
 }
 
+.del {
+    color: red;
+}
+
+.up {
+    color: #26537e;
+}
 
 </style>

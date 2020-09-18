@@ -79,7 +79,7 @@ export default {
     getPlantsInCategory: function(){
       // Set category_id of category that is currently clicked
       this.category_id = event.target.id
-      console.log(this.category_id)
+      
       fetch(`${this.URL}/api/categories/${event.target.id}/plants`, {
         method: 'get',
         headers: {
@@ -88,7 +88,6 @@ export default {
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data.results)
         this.plants = data.results
         })
     },
