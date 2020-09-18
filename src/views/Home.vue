@@ -5,13 +5,18 @@
     </div>
     <div class="media">
       <show-at :breakpoints="{medium: 1365}" breakpoint="medium">
-        <Sidebar :user='credentials' :url='URL' v-on:category_id='getPlantsInCategory($event)' />
+        <Sidebar :user='credentials' :url='URL' @category_id='getPlantsInCategory($event)'/>
       </show-at>
       <div class="content">
-        <ModalCreatePlant :user='credentials' :url='URL' :cat_id='category_id'/>
+        <ModalCreatePlant :user='credentials' 
+                          :url='URL' 
+                          :cat_ids='category_id' v-on:add_plant_event='getPlantsInCategory($event)'/>
+
         <div class='c'>
           <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
-            <Card v-bind:name='plant.name' v-bind:description='plant.description'/>
+            <Card v-bind:name='plant.name' 
+                  v-bind:description='plant.description'
+                  />
           </div>
         </div>
       </div>
@@ -83,6 +88,7 @@ export default {
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data.results)
         this.plants = data.results
         })
     },

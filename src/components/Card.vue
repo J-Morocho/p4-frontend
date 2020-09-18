@@ -1,8 +1,6 @@
 <template>
   <div class="card">
-      <header class="card-header">
-          <p class="card-header-title">{{name}}</p>
-      </header>
+      <p class="card-header-title">{{name}}</p>
       <div class="card-content">
           <div class="content">{{description}}</div>
       </div>
@@ -19,7 +17,7 @@ export default {
     props: ['name', 'description'],
     data: function(){
         return {
-            n:null
+            category_id: null,
         }
     }
 }
@@ -29,4 +27,6 @@ export default {
 .card-header-title {
     font-size: 10px;
 }
+
+
 </style>

@@ -16,7 +16,8 @@
             <ModalFormPlant :url='URL'
                             :user='credentials' 
                             :cat_id='category_id' 
-                            @close='isComponentModalActive = false'/>
+                            @close='isComponentModalActive = false'
+                            @add_plant_event='emiter($event)'/>
         </b-modal>
     </section>
 </template>
@@ -26,17 +27,25 @@ import ModalFormPlant from './ModalFormPlant'
 
 export default {
     name: 'ModalCreatePlant',
-    props: ['cat_id', 'user', 'url',],
+    props: ['cat_ids', 'user', 'url'],
     components: {
         ModalFormPlant
     },
     data: function() {
         return {
-            isComponentModalActive: false,
-            category_id: this.cat_id,
+            category_id: this.cat_ids,
             credentials: this.user,
-            URL: this.url
+            URL: this.url,
+            isComponentModalActive: false,
         }
     },
+    methods: {
+        emiter: function(event) {
+            this.$emit('add_plant_event', event)
+        }
+    },
+    beforeMount: function () {
+        this.category_id = this.cat_id
+    }
 }
 </script>

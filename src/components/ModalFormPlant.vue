@@ -33,7 +33,8 @@ export default {
         return {
             plant_name: '',
             frequency: '',
-            description: null,
+            description: '',
+            // Set to use local storage
             category_id: this.cat_id,
             credentials: this.user,
             token: '',
@@ -42,10 +43,11 @@ export default {
     },
     methods: {
         createPlant: function() {
-            console.log('click')
-            console.log(this.category_id)
-            console.log('cat_id', this.cat_id)
-            let data = {name: this.plant_name, category: this.category_id,} 
+            this.category_id = localStorage.getItem('categoryId')
+            console.log('category id', this.category_id)
+            const data = {name: this.plant_name, category: this.category_id,
+                        description: this.description}
+
             fetch(`${this.URL}/api/plants/`, {
               method: 'post',
               headers: {
@@ -56,9 +58,9 @@ export default {
             })
             .then(response => {
                 if (!response.ok) {
-                    response.json()
-                } else {
                     return response.json()
+                } else {
+                    response.json()
                 }
             })
             .then(data => {

@@ -6,7 +6,7 @@
                 </header>
                 <section class="modal-card-body">
                     <b-field label="Category Name">
-                        <b-input type="text" v-model='category_name' required></b-input>
+                        <b-input type="text" v-model='category_name' maxlength='10' required></b-input>
                     </b-field>
                 </section>
 

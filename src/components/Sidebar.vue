@@ -49,6 +49,7 @@ export default {
             .then(data => this.categories = data.results)
         },
         setCategoryId: function(event) {
+            localStorage.setItem('categoryId', event.target.id)
             this.category_id = event.target.id
             this.$emit('category_id', this.category_id)
         }
