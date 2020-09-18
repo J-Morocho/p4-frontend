@@ -94,5 +94,14 @@ menu {
 .cst-btn {
     padding: 20px;
 }
+
+.c {
+    display: flex;
+    align-items: center;
+}
+
+section {
+    display: flex;
+}
 </style>
 

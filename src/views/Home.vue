@@ -16,6 +16,9 @@
           <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
             <Card v-bind:name='plant.name' 
                   v-bind:description='plant.description'
+                  v-bind:is_watered="plant.is_watered"
+                  :p_id="plant.id"
+                  :url="URL"
                   />
           </div>
         </div>
@@ -79,7 +82,7 @@ export default {
     getPlantsInCategory: function(){
       // Set category_id of category that is currently clicked
       this.category_id = event.target.id
-      
+
       fetch(`${this.URL}/api/categories/${event.target.id}/plants`, {
         method: 'get',
         headers: {
@@ -131,6 +134,7 @@ export default {
 
 .content {
   padding: 20px;
+  width: 100%;
 }
 .content-container {
   padding: 20px;
@@ -140,6 +144,8 @@ export default {
 
 .card-container {
   margin: 10px;
+  max-width: 230px;
+  max-height: 235px;
 }
 
 
