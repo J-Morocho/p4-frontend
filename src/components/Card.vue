@@ -30,9 +30,9 @@ export default {
         waterPlantHandler: function() {
             let today = new Date()
             const m = today.getUTCMonth() + 1
-            console.log(m)
             const d = today.getUTCFullYear()+ "-" + m + "-" + today.getUTCDate()
             const t = today.getUTCHours() + ":" + today.getUTCMinutes() + ":" + today.getUTCSeconds()+"Z"
+
             const data = {category: this.category_id, name: this.name, is_watered: "true", watered_at: d+"T"+t }
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                 method: 'patch',
@@ -44,7 +44,7 @@ export default {
                 
             })
             .then(response => {
-                if (response.ok){
+                if (!response.ok){
                     console.log(response)
                     response.json()
                 } else {

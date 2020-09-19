@@ -14,6 +14,8 @@
                     to="/register"
                     type="is-info" 
                     rounded> Register</b-button>
+            
+
     </div>
 </template>
 
