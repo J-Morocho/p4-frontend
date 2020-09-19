@@ -1,6 +1,8 @@
 <template>
   <div class="card">
-      <p class="card-header-title">{{name}}</p>
+      <header class="card-header">
+        <p class="card-header-title">{{name}}</p>
+      </header>
       <div class="card-content">
           <div class="content">{{description}}</div>
           <div class="content"> Watered: {{is_watered}} </div>
@@ -8,7 +10,7 @@
       <footer class="card-footer">
           <a class="card-footer-item up" v-on:click='waterPlantHandler'>Water Plant</a>
           <a class="card-footer-item up">Edit</a>
-          <a class="card-footer-item del">Delete</a>
+          <a class="card-footer-item del" v-on:click='deletePlantHandler'>Delete</a>
       </footer>
       
   </div>
@@ -58,6 +60,17 @@ export default {
                     alert('something went wrong')
                 }
             })
+        },
+        deletePlantHandler: function() {
+            fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
+                method: 'delete',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JWT ${this.token}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {console.log(data)})
         }
     },
     beforeMount: function () {
@@ -78,5 +91,7 @@ export default {
 .up {
     color: #26537e;
 }
+
+
 
 </style>

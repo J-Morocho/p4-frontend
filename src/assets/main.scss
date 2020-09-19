@@ -1,6 +1,10 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+// Customize components
+$card-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+
 // Set your colors
 $vegetation: #79C55E;
 $vegetation-invert: findColorInvert($vegetation);

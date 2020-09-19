@@ -144,8 +144,7 @@ export default {
 
 .card-container {
   margin: 10px;
-  max-width: 230px;
-  max-height: 235px;
+  width: 460px;
 }
 
 

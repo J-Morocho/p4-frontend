@@ -9,7 +9,7 @@
                         <b-input type="text" v-model='plant_name' required></b-input>
                     </b-field>
                     <b-field label="Description">
-                        <b-input max-length="200" type="textarea" v-model='description' required></b-input>
+                        <b-input maxlength="100" type="textarea" v-model='description' required></b-input>
                     </b-field>
                     <b-field label="Watering Frequency">
                         <b-input v-model.number='frequency'></b-input>
