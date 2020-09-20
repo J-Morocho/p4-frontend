@@ -13,7 +13,10 @@
             aria-role="dialog"
             aria-modal>
             
-            <ModalFormCategory :user='credentials' :url='URL' @add_category_event='emiter($event)' @close='isComponentModalActive = false' />
+            <ModalFormCategory  :user='credentials' 
+                                :url='URL' 
+                                @add_category_event='emiter($event)' 
+                                @close='isComponentModalActive = false' />
         </b-modal>
     </section>
 </template>

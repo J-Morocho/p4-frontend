@@ -58,9 +58,9 @@ export default {
             })
             .then(response => {
                 if (!response.ok) {
-                    return response.json()
-                } else {
                     response.json()
+                } else {
+                    return response.json()
                 }
             })
             .then(data => {

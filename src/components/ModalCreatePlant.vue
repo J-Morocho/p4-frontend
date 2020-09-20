@@ -40,8 +40,8 @@ export default {
         }
     },
     methods: {
-        emiter: function(event) {
-            this.$emit('add_plant_event', event)
+        emiter: function() {
+            this.$emit('add_plant_event')
         }
     },
     beforeMount: function () {

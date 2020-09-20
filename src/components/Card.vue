@@ -25,7 +25,9 @@ export default {
             URL: this.url,
             category_id: localStorage.getItem('categoryId'),
             token: null,
-            plant_id: this.p_id
+            plant_id: this.p_id,
+            watered_count: null,
+            watered_at: null
         }
     },
     methods: {
@@ -35,6 +37,29 @@ export default {
             const d = today.getUTCFullYear()+ "-" + m + "-" + today.getUTCDate()
             const t = today.getUTCHours() + ":" + today.getUTCMinutes() + ":" + today.getUTCSeconds()+"Z"
 
+            fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JWT ${this.token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    response.json()
+                } else {
+                    return response.json()
+                }
+            })
+            .then(data => {
+                if (data) {
+                    console.log('d', data)
+                    this.watered_at = data.watered_at
+                    this.watered_count = data.watered_count
+                    this.f = data.frequency
+                }
+            })
+            
             const data = {category: this.category_id, name: this.name, is_watered: "true", watered_at: d+"T"+t }
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                 method: 'patch',
@@ -69,8 +94,11 @@ export default {
                     'Authorization': `JWT ${this.token}`
                 }
             })
-            .then(response => response.json())
-            .then(data => {console.log(data)})
+            .then(response => {
+                if (response.json()) {
+                    alert('plant removed')
+                }
+            })
         }
     },
     beforeMount: function () {

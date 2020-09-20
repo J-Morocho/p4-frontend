@@ -4,13 +4,14 @@
       <Header :user='credentials' :url='URL'/>
     </div>
     <div class="media">
-      <show-at :breakpoints="{medium: 1365}" breakpoint="medium">
+      <show-at :breakpoints="{medium: 1365, large: 1365}" breakpoint="medium">
         <Sidebar :user='credentials' :url='URL' @category_id='getPlantsInCategory($event)'/>
       </show-at>
       <div class="content">
         <ModalCreatePlant :user='credentials' 
                           :url='URL' 
-                          :cat_ids='category_id' v-on:add_plant_event='getPlantsInCategory($event)'/>
+                          :cat_ids='category_id' 
+                          @add_plant_event='getPlantsInCategory'/>
 
         <div class='c'>
           <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
@@ -77,13 +78,19 @@ export default {
           }
       })
       .then(response=> response.json())
-      .then(data => {this.plants = data.results})
+      .then(data => {
+          this.plants = data.results
+          if (!this.plants) {
+            console.log('empty')
+          }
+        })
     },
-    getPlantsInCategory: function(){
+    getPlantsInCategory: function(e){
       // Set category_id of category that is currently clicked
-      this.category_id = event.target.id
+      console.log('plant created', e)
+      this.category_id = localStorage.getItem('categoryId')
 
-      fetch(`${this.URL}/api/categories/${event.target.id}/plants`, {
+      fetch(`${this.URL}/api/categories/${this.category_id}/plants`, {
         method: 'get',
         headers: {
           'Authorization': `JWT ${this.token}`
@@ -91,7 +98,11 @@ export default {
       })
       .then(response => response.json())
       .then(data => {
-        this.plants = data.results
+          console.log(data.results)
+          this.plants = data.results
+          if (this.plants) {
+            console.log('empty')
+          }
         })
     },
   },
@@ -102,7 +113,7 @@ export default {
   beforeMount: function() {
     this.token = localStorage.getItem('data')
     this.displayCategories()
-    this.getAllPlants()
+    this.getAllPlants() 
   }
   
 }
