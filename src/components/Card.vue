@@ -9,7 +9,6 @@
       </div>
       <footer class="card-footer">
           <a class="card-footer-item up" v-on:click='waterPlantHandler'>Water Plant</a>
-          <a class="card-footer-item up">Edit</a>
           <a class="card-footer-item del" v-on:click='deletePlantHandler'>Delete</a>
       </footer>
       
@@ -27,83 +26,73 @@ export default {
             token: null,
             plant_id: this.p_id,
             watered_count: null,
-            watered_at: this.watered,
+            can_be_watered: true,
             freq: this.frequency
         }
     },
     methods: {
         dateDiff: function() {
-            console.log(new Date(this.watered_at))
-            console.log(new Date(Date.now()))
-            const r = new Date(Date.now() - new Date(this.watered_at))
-            return r.getSeconds()
+            // This function returns the difference in milliseconds between the current time 
+            // and the time the plant was last watered
+
+            // When the plant was last watered at in milliseconds
+            const t_0 = new Date(this.watered).getTime()
+            // The current time in milliseconds
+            const t_i = new Date()
+        
+            return t_i - t_0
         },
-        waterPlantHandler: function() {
+        getPlantTime: function() {
             let today = new Date()
             const m = today.getUTCMonth() + 1
             const d = today.getUTCFullYear()+ "-" + m + "-" + today.getUTCDate()
             const t = today.getUTCHours() + ":" + today.getUTCMinutes() + ":" + today.getUTCSeconds()
+            return d+"T"+t
+        },
+        waterPlantHandler: function() {
+                // The minimum amount of time that needs to elapse before the next watering
+                let minWaitTime = (24/this.frequency) * 3600000
+                let d_t = this.dateDiff()
 
-            // Get data watering data from plant and use to validate
-            fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `JWT ${this.token}`
-                }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    response.json()
-                } else {
-                    return response.json()
-                }
-            })
-            .then(data => {
-                if (data) {
-                    this.watered_at = data.watered_at
-                    // Tells us how often (in minutes) we should water the plant
-                    this.f = (24/data.frequency) * 60
-                    console.log(this.f)
-                    console.log('d diff', this.dateDiff())
+                if (d_t > minWaitTime) {
+                    // If plant needs watering then send patch request
+                    const data = {category: this.category_id, name:this.name,
+                    is_watered: "true", watered_At: this.getPlantTime() + "Z"}
+
+                    fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
+                        method: 'patch',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `JWT ${this.token}`
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        if (!response.ok){
+                            console.log(response)
+                            response.json()
+                        } else {
+                            return response.json()
+                        }
+                    })
+                    .then(data => {
+                        if (data) {
+                            console.log(data)
+                        } else {
+                            alert('something went wrong')
+                        }
+                    })            
+
                     this.$emit('watered')
                     this.$buefy.notification.open({
                         message: 'Watered Plant!',
                         type: 'is-info',
                         duration: 1000
                     })
-
-                }
-            })
-            
-            const data = {category: this.category_id, name: this.name, is_watered: "true", watered_at: d+"T"+t+"Z" }
-            //console.log('plant watered at range', t - this.watered_at.slice(11, 19))
-
-            fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
-                method: 'patch',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `JWT ${this.token}`
-                },
-                body: JSON.stringify(data)
-                
-            })
-            .then(response => {
-                if (!response.ok){
-                    console.log(response)
-                    response.json()
                 } else {
-                    return response.json()
+                    alert('You need to wait...')
                 }
-            })
-            .then(data => {
-                if (data) {
-                    console.log(data)
-                } else {
-                    alert('something went wrong')
-                }
-            })
-        },
+            },
         deletePlantHandler: function() {
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                 method: 'delete',

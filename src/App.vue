@@ -14,7 +14,8 @@ export default {
       credentials: null,
       loggedIn: false,
       token: '',
-      URL: 'https://p4-backend1.herokuapp.com'
+      //URL: 'https://p4-backend1.herokuapp.com'
+      URL: 'http://localhost:8000'
     }
   },
   methods: {

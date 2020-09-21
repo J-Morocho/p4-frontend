@@ -18,7 +18,7 @@
             <Card v-bind:name='plant.name' 
                   v-bind:description='plant.description'
                   v-bind:is_watered="plant.is_watered"
-                  v-bind:watered="plant.watered_at"
+                  :watered="plant.updated_at"
                   v-bind:frequency="plant.frequency"
                   :p_id="plant.id"
                   :url="URL"
