@@ -12,14 +12,18 @@
                           :url='URL' 
                           :cat_ids='category_id' 
                           @add_plant_event='getPlantsInCategory'/>
-
+        <div v-if='no_data'> No data to show </div>
         <div class='c'>
           <div class="card-container" v-for="plant in plants" v-bind:key="plant.id">
             <Card v-bind:name='plant.name' 
                   v-bind:description='plant.description'
                   v-bind:is_watered="plant.is_watered"
+                  v-bind:watered="plant.watered_at"
+                  v-bind:frequency="plant.frequency"
                   :p_id="plant.id"
                   :url="URL"
+                  @removed='getPlantsInCategory'
+                  @watered='getPlantsInCategory'
                   />
           </div>
         </div>
@@ -52,6 +56,7 @@ export default {
       // Default no category selected
       category_id: null,
       plants: null,
+      no_data: false,
       // TODO: Change login based on App.vue Login value
       loggedIn: this.LoggedIn,
       credentials: this.user,
@@ -85,9 +90,8 @@ export default {
           }
         })
     },
-    getPlantsInCategory: function(e){
+    getPlantsInCategory: function(){
       // Set category_id of category that is currently clicked
-      console.log('plant created', e)
       this.category_id = localStorage.getItem('categoryId')
 
       fetch(`${this.URL}/api/categories/${this.category_id}/plants`, {
@@ -98,17 +102,14 @@ export default {
       })
       .then(response => response.json())
       .then(data => {
-          console.log(data.results)
           this.plants = data.results
-          if (this.plants) {
-            console.log('empty')
+          if (this.plants == 0) {
+            this.no_data = true
+          } else {
+            this.no_data = false
           }
         })
     },
-  },
-  before: function() {
-    const {tokens, URL} = this.$route.query
-    console.log(tokens, URL)
   },
   beforeMount: function() {
     this.token = localStorage.getItem('data')

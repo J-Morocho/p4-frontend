@@ -19,7 +19,7 @@
 <script>
 export default {
     name: 'Card',
-    props: ['url', 'name', 'description', 'is_watered', 'p_id'],
+    props: ['url', 'name', 'description', 'is_watered', 'p_id', 'watered', 'frequency'],
     data: function(){
         return {
             URL: this.url,
@@ -27,16 +27,21 @@ export default {
             token: null,
             plant_id: this.p_id,
             watered_count: null,
-            watered_at: null
+            watered_at: this.watered,
+            freq: this.frequency
         }
     },
     methods: {
+        dateDiff: function(watered_at) {
+            console.log(new Date(Date.now()) - new Date(watered_at))
+        },
         waterPlantHandler: function() {
             let today = new Date()
             const m = today.getUTCMonth() + 1
             const d = today.getUTCFullYear()+ "-" + m + "-" + today.getUTCDate()
-            const t = today.getUTCHours() + ":" + today.getUTCMinutes() + ":" + today.getUTCSeconds()+"Z"
+            const t = today.getUTCHours() + ":" + today.getUTCMinutes() + ":" + today.getUTCSeconds()
 
+            // Get data watering data from plant
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                 method: 'get',
                 headers: {
@@ -53,14 +58,25 @@ export default {
             })
             .then(data => {
                 if (data) {
-                    console.log('d', data)
                     this.watered_at = data.watered_at
                     this.watered_count = data.watered_count
-                    this.f = data.frequency
+                    this.dateDiff(this.watered_at)
+                    // Tells us how often (in minutes) we should water the plant
+                    this.f = (24/data.frequency) * 60
+                    console.log(this.f)
+                    this.$emit('watered')
+                    this.$buefy.notification.open({
+                        message: 'Watered Plant!',
+                        type: 'is-info',
+                        duration: 1000
+                    })
+
                 }
             })
             
-            const data = {category: this.category_id, name: this.name, is_watered: "true", watered_at: d+"T"+t }
+            const data = {category: this.category_id, name: this.name, is_watered: "true", watered_at: d+"T"+t+"Z" }
+            console.log('plant watered at range', t - this.watered_at.slice(11, 19))
+
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                 method: 'patch',
                 headers: {
@@ -96,7 +112,12 @@ export default {
             })
             .then(response => {
                 if (response.json()) {
-                    alert('plant removed')
+                    this.$buefy.notification.open({
+                        message: 'Removed Plant',
+                        type: 'is-danger',
+                        duration: 600
+                    })
+                    this.$emit('removed')
                 }
             })
         }

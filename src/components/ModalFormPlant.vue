@@ -12,7 +12,7 @@
                         <b-input maxlength="100" type="textarea" v-model='description' required></b-input>
                     </b-field>
                     <b-field label="Watering Frequency">
-                        <b-input v-model.number='frequency'></b-input>
+                        <b-input v-model.number='frequency' required></b-input>
                         <p>Times per day</p>
                     </b-field>
                 </section>
@@ -46,7 +46,7 @@ export default {
             this.category_id = localStorage.getItem('categoryId')
 
             const data = {name: this.plant_name, category: this.category_id,
-                        description: this.description}
+                        description: this.description, frequency: this.frequency}
 
             fetch(`${this.URL}/api/plants/`, {
               method: 'post',
