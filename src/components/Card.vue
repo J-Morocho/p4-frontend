@@ -6,6 +6,7 @@
       <div class="card-content">
           <div class="content">{{description}}</div>
           <div class="content"> Watered: {{is_watered}} </div>
+          <div class="content" v-bind:next_watering='next_watering'> Next time: {{next_watering}}</div>
       </div>
       <footer class="card-footer">
           <a class="card-footer-item up" v-on:click='waterPlantHandler'>Water Plant</a>
@@ -27,7 +28,9 @@ export default {
             plant_id: this.p_id,
             watered_count: null,
             can_be_watered: true,
-            freq: this.frequency
+            freq: this.frequency,
+            next_watering: '',
+
         }
     },
     methods: {
@@ -51,9 +54,15 @@ export default {
         },
         waterPlantHandler: function() {
                 // The minimum amount of time that needs to elapse before the next watering
+                console.log('watered', this.watered)
+                let previous = new Date(this.watered).getTime()
+                let t_0 = new Date()
+                t_0.setTime(previous)
                 let minWaitTime = (24/this.frequency) * 3600000
-                let d_t = this.dateDiff()
+                this.next_watering = new Date(t_0.getTime() + minWaitTime)
 
+                let d_t = this.dateDiff()
+                //this.next_watering = new Date(n_t.getTime() + minWaitTime)
                 if (d_t > minWaitTime) {
                     // If plant needs watering then send patch request
                     const data = {category: this.category_id, name:this.name,
