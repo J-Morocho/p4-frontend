@@ -32,8 +32,11 @@ export default {
         }
     },
     methods: {
-        dateDiff: function(watered_at) {
-            console.log(new Date(Date.now()) - new Date(watered_at))
+        dateDiff: function() {
+            console.log(new Date(this.watered_at))
+            console.log(new Date(Date.now()))
+            const r = new Date(Date.now() - new Date(this.watered_at))
+            return r.getSeconds()
         },
         waterPlantHandler: function() {
             let today = new Date()
@@ -41,7 +44,7 @@ export default {
             const d = today.getUTCFullYear()+ "-" + m + "-" + today.getUTCDate()
             const t = today.getUTCHours() + ":" + today.getUTCMinutes() + ":" + today.getUTCSeconds()
 
-            // Get data watering data from plant
+            // Get data watering data from plant and use to validate
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                 method: 'get',
                 headers: {
@@ -59,11 +62,10 @@ export default {
             .then(data => {
                 if (data) {
                     this.watered_at = data.watered_at
-                    this.watered_count = data.watered_count
-                    this.dateDiff(this.watered_at)
                     // Tells us how often (in minutes) we should water the plant
                     this.f = (24/data.frequency) * 60
                     console.log(this.f)
+                    console.log('d diff', this.dateDiff())
                     this.$emit('watered')
                     this.$buefy.notification.open({
                         message: 'Watered Plant!',
@@ -75,7 +77,7 @@ export default {
             })
             
             const data = {category: this.category_id, name: this.name, is_watered: "true", watered_at: d+"T"+t+"Z" }
-            console.log('plant watered at range', t - this.watered_at.slice(11, 19))
+            //console.log('plant watered at range', t - this.watered_at.slice(11, 19))
 
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                 method: 'patch',
