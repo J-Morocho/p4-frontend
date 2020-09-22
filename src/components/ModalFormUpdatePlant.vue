@@ -38,7 +38,7 @@ export default {
         updatePlant: function() {
             const data = {name: this.name, is_watered: this.is_watered, category: this.category_id} 
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
-              method: 'put',
+              method: 'PUT',
               headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `JWT ${this.token}`

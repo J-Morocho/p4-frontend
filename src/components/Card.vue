@@ -69,7 +69,7 @@ export default {
                     is_watered: "true", watered_at: this.getPlantTime() + "Z"}
 
                     fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
-                        method: 'patch',
+                        method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': `JWT ${this.token}`
@@ -104,7 +104,7 @@ export default {
             },
         deletePlantHandler: function() {
             fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
-                method: 'delete',
+                method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${this.token}`

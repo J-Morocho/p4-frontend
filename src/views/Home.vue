@@ -67,7 +67,7 @@ export default {
   methods: {
     displayCategories: function() {
       fetch(`${this.URL}/api/categories/`, {
-          method: 'get',
+          method: 'GET',
           headers: {
               'Authorization': `JWT ${this.token}`
               }
@@ -95,7 +95,7 @@ export default {
       this.category_id = localStorage.getItem('categoryId')
 
       fetch(`${this.URL}/api/categories/${this.category_id}/plants`, {
-        method: 'get',
+        method: 'GET',
         headers: {
           'Authorization': `JWT ${this.token}`
         }

@@ -49,7 +49,7 @@ export default {
                         description: this.description, frequency: this.frequency}
 
             fetch(`${this.URL}/api/plants/`, {
-              method: 'post',
+              method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `JWT ${this.token}`

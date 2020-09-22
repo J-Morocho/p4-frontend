@@ -36,7 +36,7 @@ export default {
             // Let's emit something
             const data = {name: this.category_name} 
             fetch(`${this.URL}/api/categories/`, {
-              method: 'post',
+              method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
                   'Authorization': `JWT ${this.token}`
