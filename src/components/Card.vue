@@ -85,7 +85,7 @@ export default {
                     })
                     .then(data => {
                         if (data) {
-                            console.log(data)
+                            return data
                         } else {
                             alert('something went wrong')
                         }
