@@ -8,9 +8,9 @@
 |---|---| ---|
 |Day 1| Project Description | Complete
 |Day 1| Wireframes / Priority Matrix / Timeline `backend` and `frontend`| Complete
-|Day 2| Working RestAPI | Incomplete
-|Day 3| Core Application Structure (HTML, CSS, etc.) | Incomplete
-|Day 4| MVP & Bug Fixes | Incomplete
+|Day 2| Working RestAPI | Complete
+|Day 3| Core Application Structure (HTML, CSS, etc.) | Complete
+|Day 4| MVP & Bug Fixes | Complete
 |Day 5| Final Touches and Present | Incomplete
 
 ## Project Description
@@ -67,19 +67,19 @@ as a list of plants within those categories
 #### MVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Hamburger/Navigation | H | 1hr | hr | -hr|
-| List created categories | H | 1.5hr | -hr | -hr|
-| List created plants | H | 1.5 hr | -hr | -hr|
-| List plant by category | H | 2 hr| -hr | -hr |
-| Display card for plant | H | 1hr | hr | -hr|
-| Conntect buttons to requests | H | 3hrs| hr | -hr |
-| category modal | H | 2hr | -hr | -hr|
-| plant modal | H | 2hr | -hr | -hr|
-| Login page | H | 4hr | - | - |
-| side bar | H | 2 hr | - | - |
-| responsive | H | 3 hr | - | - |
-| vue research| H | 10hr | - | - |
-| Total | H | 33 hrs| -hrs | -hrs |
+| Hamburger/Navigation | H | 1hr | 1hr | 1hr|
+| List created categories | H | 1.5hr | 1hr | 1hr|
+| List created plants | H | 1.5 hr | 2hr | 2hr|
+| List plant by category | H | 2 hr| 1.5hr | 1.5hr |
+| Display card for plant | H | 1hr | 1.5hr | 1.5hr|
+| Conntect buttons to requests | H | 3hrs| 3.4hr | 3.4hr |
+| category modal | H | 2hr | 3hr | 3hr|
+| plant modal | H | 2hr | 1.4hr | 1.4hr|
+| Login page | H | 4hr | 5hr | 5hr |
+| side bar | H | 2 hr | 3hr | 3hr |
+| responsive | H | 3 hr | 3hr | 3hr |
+| vue research| H | 10hr | 9hr | 9hr |
+| Total | H | 33 hrs| 34.8hrs | 34.8hrs |
 
 #### PostMVP
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
@@ -92,7 +92,8 @@ as a list of plants within those categories
 
 ## Additional Libraries
 VueJS/Vue CLI  
-Bootstrap  
+Bootstrap
+vue-breakpoints
 
 
 ## Code Snippet
