@@ -63,10 +63,10 @@ export default {
 
                 let d_t = this.dateDiff()
                 //this.next_watering = new Date(n_t.getTime() + minWaitTime)
-                if (d_t > minWaitTime) {
+                if (!d_t < minWaitTime) {
                     // If plant needs watering then send patch request
                     const data = {category: this.category_id, name:this.name,
-                    is_watered: "true", watered_At: this.getPlantTime() + "Z"}
+                    is_watered: "true", watered_at: this.getPlantTime() + "Z"}
 
                     fetch(`${this.URL}/api/plants/${this.plant_id}/`, {
                         method: 'patch',
@@ -78,7 +78,6 @@ export default {
                     })
                     .then(response => {
                         if (!response.ok){
-                            console.log(response)
                             response.json()
                         } else {
                             return response.json()
@@ -99,6 +98,7 @@ export default {
                         duration: 1000
                     })
                 } else {
+                    this.$emit('watered')
                     alert('You need to wait...')
                 }
             },
